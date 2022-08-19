@@ -9,7 +9,8 @@ module.exports = {
       "blue-dark": 'hsl(220, 13%, 13%)',
       "gray-blue": 'hsl(220, 14%, 75%)',
       "gray-blue-light": 'hsl(223, 64%, 98%)',
-      "black-light":"rgba(0,0,0.75)"
+      "black-light":"rgba(0,0,0.75)",
+      "white":"rgb(255,255,255)"
     },
     screens: {
       sm: '375px',
@@ -22,6 +23,7 @@ module.exports = {
     }
   },
   variants: {
+    textColor: ['responsive', 'hover', 'focus', 'group-hover'],
     extend: {},
   },
   plugins: [],
