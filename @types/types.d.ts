@@ -14,3 +14,9 @@ export interface Product{
     category:string;
     images:Image[]
 }
+
+
+export interface CartItem extends Product{
+    quantity:number;
+    finalPrice:number;
+}

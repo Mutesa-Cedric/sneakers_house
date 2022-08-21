@@ -9,14 +9,18 @@
             </div>
             <div v-else class="flex flex-col space-y-2">
                 <div class="flex flex-col space-y-2 py-3">
-                    <div v-for="(item,index ) in itemsInCart" :key="index" class="flex items-center space-x-1">
+                    <div v-for="(item,index ) in itemsInCart" :key="index" class="flex items-center space-x-3">
                         <img :src="`/images/${item.images[0].thumbnail}`" class="w-9 h-9 rounded-md" />
                         <div class="flex flex-col">
                             <p class="text-gray-blue text-sm">{{item.title}}</p>
-                            <div class="flex">
-                                <span></span>
-                                <span></span>
-                                <span></span>
+                            <div class="flex space-x-2 items-center">
+                                <div class="text-gray-blue items-center space-x-1 flex text-xs font-semibold">
+                                   <span>${{item.finalPrice}}</span>
+                                   <img src="/images/icon-close.svg" class="h-2 w-2"/>
+                                   <span>{{item.quantity}}</span> 
+                                </div>
+                                <span class="font-semibold">${{item.finalPrice*item.quantity}}</span>
+                                
                             </div>
                         </div>
                         <button @click="removeFromCart(item)" class="flex items-center justify-center">

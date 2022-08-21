@@ -10,7 +10,7 @@
         <div class="space-x-12 flex">
           <div v-for="(image,index) in currentProduct.images" :key="index" @click="changeSelectedImage(index)"
             :style="`background-image:url(/images/${image.thumbnail}) `"
-            class="rounded-lg h-16 w-16 bg-center cursor-pointer bg-cover bg-no-repeat">
+            class="thumbnail rounded-lg h-16 w-16 bg-center cursor-pointer bg-cover bg-no-repeat">
           </div>
         </div>
       </div>
@@ -25,7 +25,7 @@
               class="text-orange bg-orange-light text-sm px-2 flex items-center justify-center rounded-md font-bold">
               {{currentProduct.discount}}%</p>
           </div>
-          <p className="line-through tet-gray-blue">${{currentProduct.price}}</p>
+          <p className="cancelledText tet-gray-blue">${{currentProduct.price}}</p>
         </div>
         <div class="flex items-center space-x-5 lg:space-x-10">
           <div class="flex bg-gray-blue-light shadow-md space-x-8 py-3 px-8 rounded-lg">
@@ -80,7 +80,12 @@ export default Vue.extend({
     methods: {
         ...mapMutations(["ADD_TO_CART"]),
         addToCart() {
-            this.ADD_TO_CART(this.currentProduct);
+            let itemToAdd={
+              ...this.currentProduct,
+              finalPrice: this.currentPrice,
+              quantity:this.currentProductQuantity
+            }
+            this.ADD_TO_CART(itemToAdd);
             console.log(this.itemsInCart);
         },
         changeSelectedImage(index: number) {
@@ -98,6 +103,26 @@ export default Vue.extend({
             }
         }
     },
-    components: { Cart }
+    components: { Cart },
 })
 </script>
+
+<style>
+  .listItem {
+    padding-bottom: 12px;
+}
+
+.listItem:hover {
+    color: black;
+    font: bold;
+    border-bottom-width: 2px;
+}
+.cancelledText{
+  text-decoration: line-through;
+}
+.cartIcon:hover{
+  color:black;
+}
+
+
+</style>
