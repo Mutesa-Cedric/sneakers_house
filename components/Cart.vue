@@ -1,5 +1,5 @@
 <template>
-    <div v-show="showCart" class="bg-white shadow-xl z-50 fixed -top-4 right-2 lg:right-20 h-auto flex flex-col p-4 rounded-lg">
+    <div v-show="showCart" class="bg-white shadow-xl z-50 fixed sm:-top-4 top-12 sm:right-2 right-8 lg:right-20 h-auto flex flex-col p-4 rounded-lg">
         <div class="border-b border-gray-blue py-3">
             <h1 class="font-semibold">Cart</h1>
         </div>

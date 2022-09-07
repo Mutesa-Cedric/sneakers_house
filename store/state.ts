@@ -1,6 +1,7 @@
-export default ()=>({
-    products:[],
+export default () => ({
+    products: [],
     currentProduct: null,
-    itemsInCart:[],
-    showCart:false,
+    itemsInCart: [],
+    showCart: false,
+    showMenu: false,
 })

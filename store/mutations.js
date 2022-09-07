@@ -25,5 +25,8 @@ export default {
     },
     TOGGLE_SHOW_CART(state) {
         state.showCart = !state.showCart;
+    },
+    TOGGLE_SHOW_MENU(state) {
+        state.showMenu = !state.showMenu;
     }
 }
