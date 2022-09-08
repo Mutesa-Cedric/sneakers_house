@@ -1,5 +1,6 @@
 <template>
   <div class="flex flex-col items-center lg:space-y-24 lg:overflow-hidden">
+    <!-- <Alerts v-show="warning"/> -->
     <Navbar />
     <Cart/>
     <div class="flex flex-col lg:flex-row items-center justify-between lg:px-48">
@@ -10,7 +11,7 @@
         <div class="space-x-12 flex">
           <div v-for="(image,index) in currentProduct.images" :key="index" @click="changeSelectedImage(index)"
             :style="`background-image:url(/images/${image.thumbnail}) `"
-            class="thumbnail rounded-lg h-16 w-16 bg-center cursor-pointer bg-cover bg-no-repeat">
+            :class="`${index===selectedImage ? 'active' : ''}  thumbnail rounded-lg h-16 w-16 bg-center cursor-pointer bg-cover bg-no-repeat`">
           </div>
         </div>
       </div>
@@ -25,7 +26,7 @@
               class="text-orange bg-orange-light text-sm px-2 flex items-center justify-center rounded-md font-bold">
               {{currentProduct.discount}}%</p>
           </div>
-          <p className="cancelledText tet-gray-blue">${{currentProduct.price}}</p>
+          <p className="cancelledText tet-gray-blue text-xs">${{currentProduct.price}}</p>
         </div>
         <div class="flex items-center space-x-5 lg:space-x-10">
           <div class="flex bg-gray-blue-light shadow-md space-x-8 py-3 px-8 rounded-lg">
@@ -63,7 +64,8 @@ export default Vue.extend({
         return {
             currentPrice: 0,
             currentProductQuantity: 0,
-            selectedImage: 0
+            selectedImage: 0,
+            warning:false,
         };
     },
     computed: {
@@ -84,9 +86,9 @@ export default Vue.extend({
               ...this.currentProduct,
               finalPrice: this.currentPrice,
               quantity:this.currentProductQuantity
-            }
+            };
+            if(this.currentProductQuantity===0) return alert("You can't buy a product with 0 quantity!");
             this.ADD_TO_CART(itemToAdd);
-            console.log(this.itemsInCart);
         },
         changeSelectedImage(index: number) {
             this.selectedImage = index;
@@ -94,7 +96,6 @@ export default Vue.extend({
         incrementProductQuantity() {
             if (this.currentProduct.quantityAvailable > this.currentProductQuantity) {
                 this.currentProductQuantity++;
-                console.log(this.currentProductQuantity);
             }
         },
         decrementProductQuantity() {
@@ -124,5 +125,8 @@ export default Vue.extend({
   color:black;
 }
 
+.thumbnail.active{
+  border:3px solid orange;
+}
 
 </style>

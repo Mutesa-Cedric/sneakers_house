@@ -3,6 +3,9 @@ export default {
         state.products = products
     },
     ADD_TO_CART(state, product) {
+        for(let i=0;i<state.itemsInCart.length;i++){
+            if(product.id===state.itemsInCart[i].id) return alert("item already exist");
+        }
         state.itemsInCart.push(product);
     },
     REMOVE_FROM_CART(state, product) {

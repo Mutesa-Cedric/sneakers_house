@@ -47,7 +47,6 @@ export default {
         ...mapMutations(['TOGGLE_SHOW_CART']),
         toggleShowCart(): void {
             this.TOGGLE_SHOW_CART();
-            console.log("cart toggled!");
         }
     }
 }
