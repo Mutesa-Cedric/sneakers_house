@@ -37,7 +37,7 @@ export default {
   ],
   googleFonts: {
     display: "swap",
-    download:true,
+    download: true,
     families: {
       'Kumbh Sans': [300, 400, 600, 700, 800],
     }
@@ -47,8 +47,17 @@ export default {
     '@nuxtjs/axios'
   ],
   axios: {
-    baseURL: 'http://localhost:4000'
+    baseURL: process.env.BASE_URL
   },
+  publicRuntimeConfig: {
+    axios: {
+      baseURL: process.env.BASE_URL || 'http://localhost:3000/api'
+    }
+  },
+  serverMiddleware: {
+    '/api': '~/api'
+  },
+
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {
