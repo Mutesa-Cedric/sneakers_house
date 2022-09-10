@@ -1,23 +1,26 @@
-export default{
-    SET_PRODUCTS(state,products){
-       state.products=products 
+export default {
+    SET_PRODUCTS(state, products) {
+        state.products = products
     },
-    ADD_TO_CART(state,product){
-        state.products.push(product);
+    ADD_TO_CART(state, product) {
+        state.itemsInCart.push(product);
     },
-    REMOVE_FROM_CART(state,product){
-        state.itemsInCart.splice(state.itemsInCart.indexOf(product),1);
+    REMOVE_FROM_CART(state, product) {
+        state.itemsInCart.splice(state.itemsInCart.indexOf(product), 1);
     },
-    INCREMENT_QUANTITY(state,product){
+    INCREMENT_QUANTITY(state, product) {
         product.quantity++;
     },
-    DECREMENT_QUANTITY(state,product){
+    DECREMENT_QUANTITY(state, product) {
         product.quantity--;
     },
-    SET_CART(state,cart){
-        state.itemsInCart=cart;
+    SET_CART(state, cart) {
+        state.itemsInCart = cart;
     },
-    SET_CURRENT_PRODUCT(state,product){
-        state.currentProduct=product
+    SET_CURRENT_PRODUCT(state, product) {
+        state.currentProduct = product
+    },
+    TOGGLE_SHOW_CART(state) {
+        state.showCart = !state.showCart;
     }
 }
