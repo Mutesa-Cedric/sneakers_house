@@ -57,7 +57,8 @@ export default {
   serverMiddleware: {
     '/api': '~/api'
   },
-  buildDir: 'dist',
+
+
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {
     postcss: {
